@@ -1,4 +1,5 @@
 # @magicdawn/x
+
 > personal utils repo
 
 [![Build Status](https://img.shields.io/travis/magicdawn/@magicdawn/x.svg?style=flat-square)](https://travis-ci.org/magicdawn/@magicdawn/x)
@@ -8,17 +9,45 @@
 [![npm license](https://img.shields.io/npm/l/@magicdawn/x.svg?style=flat-square)](http://magicdawn.mit-license.org)
 
 ## Install
+
 ```sh
-$ npm i @magicdawn/x --save
+$ cnpm i @magicdawn/x -S
+```
+
+## Setup
+
+should transpile this dep
+
+### poi.config.js
+
+```js
+module.exports = {
+  babel: {
+    transpileModules: ['@magicdawn/x'],
+  },
+}
+```
+
+### vue.config.js
+
+```js
+module.exports = {
+  transpileDependencies: ['@magicdawn/x'],
+}
 ```
 
 ## API
+
+### vue
+
 ```js
-const magicdawnX = require('@magicdawn/x');
+const {preventObserve} = require('@magicdawn/vue')
 ```
 
 ## Changelog
+
 [CHANGELOG.md](CHANGELOG.md)
 
 ## License
+
 the MIT License http://magicdawn.mit-license.org
