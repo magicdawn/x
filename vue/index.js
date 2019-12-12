@@ -1,1 +1,2 @@
-export preventObserve from './preventObserve'
+import preventObserve from './preventObserve'
+export {preventObserve}
