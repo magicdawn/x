@@ -1,0 +1,47 @@
+{
+  "name": "@magicdawn/x",
+  "version": "0.0.1",
+  "description": "personal utils repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "test-cover": "nyc --reporter=lcov --reporter=text mocha",
+    "report-cover": "codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/magicdawn/x.git"
+  },
+  "keywords": [
+    "@magicdawn"
+  ],
+  "author": "magicdawn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/magicdawn/x/issues"
+  },
+  "homepage": "https://github.com/magicdawn/x#readme",
+  "devDependencies": {
+    "@magicdawn/eslint-config": "^0.0.1",
+    "@magicdawn/prettier-config": "^0.0.1",
+    "codecov": "^3.3.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.0.0",
+    "should": "^13.2.3",
+    "eslint": "latest",
+    "prettier": "latest",
+    "husky": "latest",
+    "lint-staged": "latest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,less,vue}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
