@@ -41,7 +41,7 @@ module.exports = {
 ### vue
 
 ```js
-const {preventObserve} = require('@magicdawn/vue')
+const {preventObserve} = require('@magicdawn/x/vue')
 ```
 
 ## Changelog
