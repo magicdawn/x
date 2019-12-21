@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.0.4 2019-12-21
+
+- add `geo/wkt-util.js`
+- add `vuex/util.js`
+
 ## v0.0.3 2019-12-12
 
 - remove `export xxx from 'file'` special syntax
