@@ -1,4 +1,4 @@
-import produce from 'immer'
+import produce, {nothing} from 'immer'
 
 export default (
   {state, setState, setStateAction} = {
@@ -12,8 +12,41 @@ export default (
       return (state, action) => {
         if (typeof state === 'object' && action && action.type === setStateAction) {
           const {nsp, payload} = action
-          return produce(state, draft => {
-            Object.assign(draft[nsp], payload)
+
+          return produce(state, (draft) => {
+            // invalid payload
+            if (typeof payload === 'undefined') return
+            if (payload === null) return
+
+            if (typeof payload === 'object') {
+              Object.assign(draft[nsp], payload)
+              return
+            }
+
+            if (typeof payload === 'function') {
+              const next = payload(draft[nsp])
+
+              // the payload fn modify state
+              if (typeof next === 'undefined') {
+                return
+              }
+
+              // immer nothing
+              else if (next === nothing) {
+                draft[nsp] = undefined
+                return
+              }
+
+              // return new state
+              else {
+                draft[nsp] = next
+                return
+              }
+            }
+
+            // others just replace with payload
+            // number / string / boolean ...
+            return payload
           })
         }
 
@@ -34,7 +67,7 @@ export default (
       })
 
       // this.setState => dispatch nsp/setState
-      modelDispatch[setState] = function(payload) {
+      modelDispatch[setState] = function (payload) {
         return store.dispatch({type: `${setStateAction}`, nsp, payload})
       }
     },

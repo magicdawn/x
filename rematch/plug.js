@@ -8,6 +8,10 @@ export function setStore(s) {
   store = s
 }
 
+/**
+ * use as a react hoc
+ */
+
 export default function plug({namespace, state = []}) {
   if (!Array.isArray(state)) state = [state]
 
@@ -32,10 +36,10 @@ export default function plug({namespace, state = []}) {
 
   const stateKeys = state
 
-  const hoc = BaseCompoennt => {
+  const hoc = (BaseCompoennt) => {
     return function Plug(props) {
       // for update
-      const storeState = useSelector(state => {
+      const storeState = useSelector((state) => {
         return _.pick(state[namespace], stateKeys)
       }, shallowEqual)
 
