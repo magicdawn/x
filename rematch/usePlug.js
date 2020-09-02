@@ -1,8 +1,8 @@
 import assert from 'assert'
-import React, {useMemo} from 'react'
-import {withProps, shallowEqual} from 'recompose'
+import {useMemo} from 'react'
+import {shallowEqual} from 'recompose'
 import {useStore, useSelector} from 'react-redux'
-import {get, pick, upperFirst} from 'lodash'
+import {get, pick} from 'lodash'
 
 /**
  * a react custom hook
