@@ -4,7 +4,7 @@
   "description": "personal utils repo",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "jest",
     "test-cover": "nyc --reporter=lcov --reporter=text mocha",
     "report-cover": "codecov"
   },
@@ -22,17 +22,25 @@
   },
   "homepage": "https://github.com/magicdawn/x#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
     "@magicdawn/eslint-config": "^0.0.1",
     "@magicdawn/prettier-config": "^0.0.1",
     "babel-eslint": "^10.0.3",
+    "babel-jest": "^26.3.0",
     "codecov": "^3.3.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.0.1",
     "husky": "latest",
+    "immer": "^7.0.8",
+    "jest": "^26.4.2",
     "lint-staged": "latest",
     "mocha": "^6.1.4",
     "nyc": "^14.0.0",
     "prettier": "latest",
+    "react": "^16.13.1",
+    "react-hooks-testing-library": "^0.6.0",
+    "react-test-renderer": "^16.13.1",
     "should": "^13.2.3"
   },
   "peerDependencies": {
@@ -49,5 +57,10 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "dependencies": {
+    "immer": "^7.0.8",
+    "lodash": "^4.17.20",
+    "moment": "^2.27.0"
   }
 }
