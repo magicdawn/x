@@ -8,6 +8,10 @@
 [![npm downloads](https://img.shields.io/npm/dm/@magicdawn/x.svg?style=flat-square)](https://www.npmjs.com/package/@magicdawn/x)
 [![npm license](https://img.shields.io/npm/l/@magicdawn/x.svg?style=flat-square)](http://magicdawn.mit-license.org)
 
+## Docs
+
+see https://magicdawn-x.netlify.app/
+
 ## Install
 
 ```sh
