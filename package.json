@@ -7,7 +7,8 @@
     "test": "jest",
     "test-cover": "nyc --reporter=lcov --reporter=text mocha",
     "report-cover": "codecov",
-    "docs:dev": "dumi dev"
+    "docs:dev": "dumi dev",
+    "docs:build": "dumi build"
   },
   "repository": {
     "type": "git",
