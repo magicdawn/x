@@ -25,17 +25,17 @@ import React, {useCallback} from 'react'
 export default () => {
   const [user, modifyUser] = useModifyState({name: 'zhangsan', age: 18})
 
-  const onNameChange = useCallback((e) => {
+  const onNameChange = useCallback(e => {
     const name = e.target.value
-    modifyUser((u) => void (u.name = name))
+    modifyUser(u => void (u.name = name))
   }, [])
 
-  const onAgeChange = useCallback((e) => {
+  const onAgeChange = useCallback(e => {
     const age = e.target.value
-    modifyUser((u) => {
+    modifyUser(u => {
       u.age = age
     })
-  })
+  }, [])
 
   return (
     <div>
