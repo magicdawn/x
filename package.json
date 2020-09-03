@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "test-cover": "nyc --reporter=lcov --reporter=text mocha",
-    "report-cover": "codecov"
+    "report-cover": "codecov",
+    "docs:dev": "dumi dev"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "babel-eslint": "^10.0.3",
     "babel-jest": "^26.3.0",
     "codecov": "^3.3.0",
+    "dumi": "^1.0.34",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.0.1",
     "husky": "latest",

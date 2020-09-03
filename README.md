@@ -14,36 +14,6 @@
 $ cnpm i @magicdawn/x -S
 ```
 
-## Setup
-
-should transpile this dep
-
-### poi.config.js
-
-```js
-module.exports = {
-  babel: {
-    transpileModules: ['@magicdawn/x'],
-  },
-}
-```
-
-### vue.config.js
-
-```js
-module.exports = {
-  transpileDependencies: ['@magicdawn/x'],
-}
-```
-
-## API
-
-### vue
-
-```js
-const {preventObserve} = require('@magicdawn/x/vue')
-```
-
 ## Changelog
 
 [CHANGELOG.md](CHANGELOG.md)
