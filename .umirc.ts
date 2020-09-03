@@ -11,4 +11,10 @@ export default defineConfig({
   resolve: {
     includes: ['docs', 'react', 'rematch'],
   },
+
+  navs: [
+    //
+    null,
+    {title: 'GitHub', path: 'https://github.com/magicdawn/x'},
+  ],
 })
