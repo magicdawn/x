@@ -1,4 +1,5 @@
-import produce, {nothing} from 'immer'
+import produce from 'immer'
+import genState from '../react/hooks/internal/reducer.js'
 
 export default (
   {state, setState, setStateAction} = {
@@ -10,47 +11,14 @@ export default (
   return {
     onRootReducer(reducer, bag) {
       return (state, action) => {
-        if (typeof state === 'object' && action && action.type === setStateAction) {
-          const {nsp, payload} = action
-
-          return produce(state, (draft) => {
-            // invalid payload
-            if (typeof payload === 'undefined') return
-            if (payload === null) return
-
-            if (typeof payload === 'object') {
-              Object.assign(draft[nsp], payload)
-              return
-            }
-
-            if (typeof payload === 'function') {
-              const next = payload(draft[nsp])
-
-              // the payload fn modify state
-              if (typeof next === 'undefined') {
-                return
-              }
-
-              // immer nothing
-              else if (next === nothing) {
-                draft[nsp] = undefined
-                return
-              }
-
-              // return new state
-              else {
-                draft[nsp] = next
-                return
-              }
-            }
-
-            // others just replace with payload
-            // number / string / boolean ...
-            return payload
-          })
+        if (!(typeof state === 'object' && action && action.type === setStateAction)) {
+          return reducer(state, action)
         }
 
-        return reducer(state, action)
+        const {nsp, payload} = action
+        return produce(state, draft => {
+          draft[nsp] = genState(draft[nsp], payload)
+        })
       }
     },
 

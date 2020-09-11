@@ -8,19 +8,19 @@ describe('useModifyState', () => {
     expect(obj).toEqual({})
 
     act(() => {
-      modifyObj((o) => {
+      modifyObj(o => {
         o.testKey = 'testVal'
       })
     })
     expect(result.current[0].testKey).toBe('testVal')
 
     act(() => {
-      modifyObj((o) => void (o.testKey = 'testVal2'))
+      modifyObj(o => void (o.testKey = 'testVal2'))
     })
     expect(result.current[0].testKey).toBe('testVal2')
 
     act(() => {
-      modifyObj((o) => {
+      modifyObj(o => {
         o.testKey = 'testVal3'
         return o
       })
@@ -28,7 +28,7 @@ describe('useModifyState', () => {
     expect(result.current[0].testKey).toBe('testVal3')
 
     act(() => {
-      modifyObj((o) => {
+      modifyObj(o => {
         return {...o, testKey: 'testVal4'}
       })
     })
@@ -41,8 +41,24 @@ describe('useModifyState', () => {
     expect(count).toBe(0)
 
     act(() => {
-      modifyCount((c) => ++c)
+      modifyCount(c => ++c)
     })
     expect(result.current[0]).toBe(1)
+  })
+
+  test('modifyState(partialState) works like setState', () => {
+    const {result} = renderHook(() => useModifyState({name: 'zhangsan', age: 18}))
+    const [user, modifyUser] = result.current
+    expect(user).toEqual({name: 'zhangsan', age: 18})
+
+    act(() => {
+      modifyUser({name: 'lisi'})
+    })
+    expect(result.current[0]).toEqual({name: 'lisi', age: 18})
+
+    act(() => {
+      modifyUser({age: 19})
+    })
+    expect(result.current[0]).toEqual({name: 'lisi', age: 19})
   })
 })
