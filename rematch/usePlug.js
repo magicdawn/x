@@ -20,7 +20,7 @@ export default function usePlug({nsp, state = [], ...extraOptions}) {
   const stateKeys = Array.isArray(state) ? state : [state]
 
   // for update
-  const selectedState = useSelector((state) => {
+  const selectedState = useSelector(state => {
     return pick(state[nsp], stateKeys)
   }, shallowEqual)
 

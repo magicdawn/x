@@ -1,5 +1,5 @@
 import {useState, useCallback} from 'react'
-import produce from 'immer'
+import reducer from './internal/reducer.js'
 
 /**
  * this will wrap the modify fn with immer produce,
@@ -14,6 +14,11 @@ import produce from 'immer'
 
 export default function useModifyState(initialState) {
   const [state, setState] = useState(initialState)
-  const modifyState = useCallback((fn) => setState(produce(fn)), [setState])
+  const modifyState = useCallback(
+    payload => {
+      setState(state => reducer(state, payload))
+    },
+    [setState]
+  )
   return [state, modifyState]
 }
