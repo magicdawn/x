@@ -16,7 +16,7 @@ export default (
         }
 
         const {nsp, payload} = action
-        return produce(state, draft => {
+        return produce(state, (draft) => {
           draft[nsp] = genState(draft[nsp], payload)
         })
       }

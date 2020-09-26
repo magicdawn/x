@@ -1,7 +1,6 @@
 import assert from 'assert'
 import {useMemo} from 'react'
-import {shallowEqual} from 'recompose'
-import {useStore, useSelector} from 'react-redux'
+import {useStore, useSelector, shallowEqual} from 'react-redux'
 import {get, pick} from 'lodash'
 
 /**
@@ -20,7 +19,7 @@ export default function usePlug({nsp, state = [], ...extraOptions}) {
   const stateKeys = Array.isArray(state) ? state : [state]
 
   // for update
-  const selectedState = useSelector(state => {
+  const selectedState = useSelector((state) => {
     return pick(state[nsp], stateKeys)
   }, shallowEqual)
 

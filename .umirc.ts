@@ -17,4 +17,23 @@ export default defineConfig({
     null,
     {title: 'GitHub', path: 'https://github.com/magicdawn/x'},
   ],
+
+  menus: {
+    '/react': [
+      {
+        title: 'hooks',
+        children: ['react/hooks/useModifyState', 'react/hooks/useShallowEqualSelector'],
+      },
+    ],
+    '/rematch': [
+      {
+        title: 'plugin',
+        children: ['rematch/statePlugin', 'rematch/listenPlugin'],
+      },
+      {
+        title: 'hooks',
+        children: ['rematch/usePlug'],
+      },
+    ],
+  },
 })

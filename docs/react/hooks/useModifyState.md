@@ -1,12 +1,4 @@
----
-nav:
-  title: React
-  path: /react
----
-
-# React Hooks
-
-## useModifyState
+# useModifyState
 
 > use `immer` to modify and create a new state
 
@@ -19,22 +11,20 @@ const [state, modifyState] = useModifyState(initialState)
 ### demo
 
 ```jsx
-import {useModifyState} from '@magicdawn/x/react/hooks'
 import React, {useCallback} from 'react'
+import {useModifyState} from '@magicdawn/x/react/hooks'
 
 export default () => {
-  const [user, modifyUser] = useModifyState({name: 'zhangsan', age: 18})
+  const [user, setUser] = useModifyState({name: 'zhangsan', age: 18})
 
-  const onNameChange = useCallback(e => {
+  const onNameChange = useCallback((e) => {
     const name = e.target.value
-    modifyUser(u => void (u.name = name))
+    setUser((u) => void (u.name = name))
   }, [])
 
-  const onAgeChange = useCallback(e => {
+  const onAgeChange = useCallback((e) => {
     const age = e.target.value
-    modifyUser(u => {
-      u.age = age
-    })
+    setUser({age})
   }, [])
 
   return (
